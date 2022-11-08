@@ -1,0 +1,1 @@
+export { useGetRepositories } from './useGetRepositories';
