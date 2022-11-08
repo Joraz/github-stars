@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 
 import { SEARCH_FOR_REPOSITORIES } from '../graphql/search.query';
+import { Repo } from '../models';
 
 type SearchVariables = {
   query: string;
@@ -8,12 +9,7 @@ type SearchVariables = {
 
 type SearchQueryData = {
   search: {
-    nodes: Array<{
-      name: string;
-      url: string;
-      stargazerCount: number;
-      forkCount: number;
-    }>;
+    nodes: Array<Repo>;
   };
 };
 
