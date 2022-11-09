@@ -1,6 +1,7 @@
 import { fireEvent, render as rtlRender, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
+import { noop } from '../utils/noop';
 import { Pagination, PaginationProps } from './Pagination';
 
 const render = (overrides: Partial<PaginationProps> = {}) =>
@@ -9,7 +10,7 @@ const render = (overrides: Partial<PaginationProps> = {}) =>
       disableBack={false}
       disableForwards={false}
       offset={0}
-      onClick={() => {}}
+      onClick={noop}
       totalCount={100}
       {...overrides}
     />

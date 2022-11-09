@@ -1,13 +1,4 @@
-import {
-  Button,
-  Center,
-  Flex,
-  Group,
-  Space,
-  Table as MantineTable,
-  Text,
-  UnstyledButton,
-} from '@mantine/core';
+import { Button, Flex } from '@mantine/core';
 
 export type PaginationProps = {
   disableBack?: boolean;

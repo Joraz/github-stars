@@ -1,13 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
+import { noop } from '../utils/noop';
 import { Table } from './table';
 
 describe('Table', () => {
   it('displays loading state', () => {
-    render(
-      <Table isLoading sortMode="forks-asc" onSortModeChange={() => {}} />
-    );
+    render(<Table isLoading sortMode="forks-asc" onSortModeChange={noop} />);
 
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
@@ -24,7 +23,7 @@ describe('Table', () => {
           },
         ]}
         sortMode="forks-asc"
-        onSortModeChange={() => {}}
+        onSortModeChange={noop}
       />
     );
 

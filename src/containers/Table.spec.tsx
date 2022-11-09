@@ -37,7 +37,7 @@ describe('Table Container', () => {
   it('shows loading state', async () => {
     render(
       <MockedProvider
-        mocks={[
+      mocks={[
           {
             request: {
               query: SEARCH_FOR_REPOSITORIES,

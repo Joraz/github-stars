@@ -1,12 +1,13 @@
 import { fireEvent, render as rtlRender, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
+import { noop } from '../utils/noop';
 import { SortableHeader, SortableHeaderProps } from './SortableHeader';
 
 const render = (overrides: Partial<SortableHeaderProps> = {}) =>
   rtlRender(
     <SortableHeader
-      onClick={() => {}}
+      onClick={noop}
       reversed={false}
       sorted={false}
       text="Name"
