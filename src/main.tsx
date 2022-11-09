@@ -1,16 +1,18 @@
-import { ApolloProvider } from '@apollo/client';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import { ApolloProvider } from '@apollo/client';
+import { MantineProvider } from '@mantine/core';
 
 import App from './App';
 import { client } from './graphql';
 
-import './index.css';
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <MantineProvider withGlobalStyles withNormalizeCSS>
+        <App />
+      </MantineProvider>
     </ApolloProvider>
   </React.StrictMode>
 );
