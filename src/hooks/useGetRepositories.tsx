@@ -11,7 +11,7 @@ type SearchVariables = {
   before?: string;
 };
 
-type SearchQueryData = {
+export type SearchQueryData = {
   search: {
     nodes: Array<Repo>;
     repositoryCount: number;

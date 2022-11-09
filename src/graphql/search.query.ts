@@ -30,9 +30,6 @@ export const SEARCH_FOR_REPOSITORIES = gql`
           stargazerCount
           forkCount
         }
-        ... on Node {
-          id
-        }
       }
     }
   }

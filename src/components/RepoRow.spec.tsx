@@ -7,7 +7,6 @@ describe('RepoRow', () => {
     render(
       <RepoRow
         forkCount={2}
-        id="test"
         name="We ❤ testing"
         stargazerCount={10}
         url="https://github.com/Joraz/github-stars"
@@ -23,7 +22,6 @@ describe('RepoRow', () => {
     render(
       <RepoRow
         forkCount={2}
-        id="test"
         name="We ❤ testing"
         stargazerCount={10}
         url="https://github.com/Joraz/github-stars"
