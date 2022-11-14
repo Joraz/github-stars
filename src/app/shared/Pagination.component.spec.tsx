@@ -1,8 +1,8 @@
 import { fireEvent, render as rtlRender, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
-import { noop } from '../utils/noop';
-import { Pagination, PaginationProps } from './Pagination';
+import { noop } from '../../utils/noop';
+import { Pagination, PaginationProps } from './Pagination.component';
 
 const render = (overrides: Partial<PaginationProps> = {}) =>
   rtlRender(
@@ -16,7 +16,7 @@ const render = (overrides: Partial<PaginationProps> = {}) =>
     />
   );
 
-describe('Pagination', () => {
+describe('App/Shared/Pagination', () => {
   it('renders text based on offset and total', () => {
     render();
 

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import { RepoRow } from './RepoRow';
 
-describe('RepoRow', () => {
+describe('Stars/RepoRow', () => {
   it('displays correct data for repository', () => {
     render(
       <RepoRow

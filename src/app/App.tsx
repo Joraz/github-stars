@@ -1,8 +1,8 @@
 import { Container, Space, Title } from '@mantine/core';
 
-import { Table } from './containers';
+import { Table } from '../stars';
 
-function App() {
+export function App() {
   return (
     <Container>
       <Title order={1}>React-tagged GitHub Repositories</Title>
@@ -11,5 +11,3 @@ function App() {
     </Container>
   );
 }
-
-export default App;

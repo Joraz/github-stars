@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { ApolloProvider } from '@apollo/client';
 import { MantineProvider } from '@mantine/core';
 
-import App from './App';
-import { client } from './graphql';
+import { App, client } from './app';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

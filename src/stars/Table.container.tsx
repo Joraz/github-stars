@@ -2,8 +2,9 @@ import { useState } from 'react';
 
 import { Space, Text } from '@mantine/core';
 
-import { Pagination, Table as PresTable } from '../components';
-import { useGetRepositories } from '../hooks';
+import { Pagination } from '../app/shared';
+import { Table as PresTable } from './components/Table';
+import { useGetRepositories } from './hooks';
 
 export const Table = () => {
   const [offset, setOffset] = useState(0);

@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 
-import { SEARCH_FOR_REPOSITORIES } from '../graphql/search.query';
+import { SEARCH_FOR_REPOSITORIES } from '../graphql';
 import { Repo } from '../models';
 
 type SearchVariables = {
@@ -11,7 +11,7 @@ type SearchVariables = {
   before?: string;
 };
 
-export type SearchQueryData = {
+type SearchQueryData = {
   search: {
     nodes: Array<Repo>;
     repositoryCount: number;

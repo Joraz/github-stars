@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 
-import { Table } from './table';
+import { Table } from './Table';
 
-describe('Table', () => {
+describe('Stars/Table', () => {
   it('displays loading state', () => {
     render(<Table isLoading />);
 

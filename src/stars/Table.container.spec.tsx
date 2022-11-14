@@ -1,11 +1,11 @@
 import { MockedProvider } from '@apollo/client/testing';
 import { render, screen } from '@testing-library/react';
 import { GraphQLError } from 'graphql';
-import { SEARCH_FOR_REPOSITORIES } from '../graphql/search.query';
 
-import { Table } from './Table';
+import { SEARCH_FOR_REPOSITORIES } from './graphql/search.query';
+import { Table } from './Table.container';
 
-describe('Table Container', () => {
+describe('Stars/Table Container', () => {
   it('shows a message when there is an error fetching data', async () => {
     render(
       <MockedProvider
@@ -37,7 +37,7 @@ describe('Table Container', () => {
   it('shows loading state', async () => {
     render(
       <MockedProvider
-      mocks={[
+        mocks={[
           {
             request: {
               query: SEARCH_FOR_REPOSITORIES,
@@ -58,7 +58,7 @@ describe('Table Container', () => {
     expect(await screen.findByText('Loading...')).toBeInTheDocument();
   });
 
-  it.only('shows data', async () => {
+  it('shows data', async () => {
     render(
       <MockedProvider
         mocks={[
