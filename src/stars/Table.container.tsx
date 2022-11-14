@@ -1,16 +1,28 @@
 import { useState } from 'react';
 
-import { Space, Text } from '@mantine/core';
+import styled from '@emotion/styled';
+import { CloseButton, Text, TextInput } from '@mantine/core';
+import { useDebouncedValue } from '@mantine/hooks';
 
 import { Pagination } from '../app/shared';
 import { Table as PresTable } from './components/Table';
 import { useGetRepositories } from './hooks';
 
+const TableWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const DEFAULT_TOPIC = 'react';
+
 export const Table = () => {
   const [offset, setOffset] = useState(0);
+  const [topic, setTopic] = useState(DEFAULT_TOPIC);
+  const [debouncedTopic] = useDebouncedValue(topic, 500);
 
   const { data, error, loading, refetch } = useGetRepositories({
-    query: 'topic:react sort:stars-desc',
+    query: `topic:${debouncedTopic} sort:stars-desc`,
     first: 20,
   });
 
@@ -39,9 +51,22 @@ export const Table = () => {
   };
 
   return (
-    <>
+    <TableWrapper>
+      <TextInput
+        label="Topic Tag"
+        value={topic}
+        onChange={({ target: { value } }) => {
+          setTopic(value.toLowerCase());
+        }}
+        rightSection={
+          <CloseButton
+            onClick={() => {
+              setTopic('');
+            }}
+          />
+        }
+      />
       <PresTable isLoading={loading} data={data?.search.nodes} />
-      <Space h="lg" />
       <Pagination
         disableBack={!data?.search.pageInfo.hasPreviousPage}
         disableForwards={!data?.search.pageInfo.hasNextPage}
@@ -49,6 +74,6 @@ export const Table = () => {
         offset={offset}
         onClick={handlePaginationChange}
       />
-    </>
+    </TableWrapper>
   );
 };
