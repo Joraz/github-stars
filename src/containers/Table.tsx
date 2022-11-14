@@ -2,15 +2,14 @@ import { useState } from 'react';
 
 import { Space, Text } from '@mantine/core';
 
-import { Pagination, SortMode, Table as PresTable } from '../components';
+import { Pagination, Table as PresTable } from '../components';
 import { useGetRepositories } from '../hooks';
 
 export const Table = () => {
-  const [sortMode, setSortMode] = useState<SortMode>('stars-desc');
   const [offset, setOffset] = useState(0);
 
   const { data, error, loading, refetch } = useGetRepositories({
-    query: `topic:react sort:${sortMode}`,
+    query: 'topic:react sort:stars-desc',
     first: 20,
   });
 
@@ -38,19 +37,9 @@ export const Table = () => {
     }
   };
 
-  const handleSortChange = (sortMode: SortMode) => {
-    setOffset(0);
-    setSortMode(sortMode);
-  };
-
   return (
     <>
-      <PresTable
-        isLoading={loading}
-        onSortModeChange={handleSortChange}
-        sortMode={sortMode}
-        data={data?.search.nodes}
-      />
+      <PresTable isLoading={loading} data={data?.search.nodes} />
       <Space h="lg" />
       <Pagination
         disableBack={!data?.search.pageInfo.hasPreviousPage}
