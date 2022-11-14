@@ -4,19 +4,25 @@ import { Space, Text } from '@mantine/core';
 
 import { Pagination, SortMode, Table as PresTable } from '../components';
 import { useGetRepositories } from '../hooks';
+import { SortingFunctionMap } from '../utils/sorting-functions';
 
 export const Table = () => {
   const [sortMode, setSortMode] = useState<SortMode>('stars-desc');
   const [offset, setOffset] = useState(0);
 
   const { data, error, loading, refetch } = useGetRepositories({
-    query: `topic:react sort:${sortMode}`,
+    query: 'topic:react sort:stars-desc',
     first: 20,
   });
 
   if (error) {
     return <Text c="red">Oops! An error occurred when fetching the data</Text>;
   }
+
+  // Sort mutates the original array, so we have to make a copy to avoid React erroring
+  const sortedData = [...(data?.search.nodes || [])].sort(
+    SortingFunctionMap[sortMode]
+  );
 
   const handlePaginationChange = (direction: 'back' | 'forward') => {
     if (direction === 'back') {
@@ -39,7 +45,6 @@ export const Table = () => {
   };
 
   const handleSortChange = (sortMode: SortMode) => {
-    setOffset(0);
     setSortMode(sortMode);
   };
 
@@ -49,7 +54,7 @@ export const Table = () => {
         isLoading={loading}
         onSortModeChange={handleSortChange}
         sortMode={sortMode}
-        data={data?.search.nodes}
+        data={sortedData}
       />
       <Space h="lg" />
       <Pagination
